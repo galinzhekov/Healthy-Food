@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/background"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="72sp"
+        android:layout_height="72sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/logo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/whatDoYouWantToCookTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:text="@string/what_do_you_want_to_cook_today"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/logoImage" />
+
+    <EditText
+        android:id="@+id/searchBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_corner_background"
+        android:hint="@string/search_for_recipes"
+        android:padding="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/gray"
+        android:drawableLeft="@drawable/ic_search"
+        android:drawablePadding="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/whatDoYouWantToCookTextView"
+    />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/categoriesTabLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchBar"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        app:tabMode="scrollable"
+        app:tabGravity="fill"
+        app:tabTextColor="@color/gray"
+        app:tabSelectedTextColor="@color/orange"
+        app:tabIndicatorColor="@color/orange"
+        android:background="@color/background"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recipesRecyclerView"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categoriesTabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
