@@ -7,7 +7,7 @@ import androidx.room.Query
 import com.example.angelovaapplication.model.Category
 
 @Dao
-interface CategoryDao {
+interface CategoryDao {//sql zaqvki
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(category: Category)
 

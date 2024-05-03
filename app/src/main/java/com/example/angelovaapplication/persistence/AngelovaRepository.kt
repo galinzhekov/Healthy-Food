@@ -16,7 +16,7 @@ class AngelovaRepository(context: Context) {
         angelovaDatabase?.categoryDao?.insert(category)
     }
 
-    suspend fun getAllCategories(): List<Category> = angelovaDatabase?.categoryDao?.getAllCategories() ?: listOf()
+    suspend fun getAllCategories(): List<Category>? = angelovaDatabase?.categoryDao?.getAllCategories()
 
 
 
@@ -24,7 +24,7 @@ class AngelovaRepository(context: Context) {
         angelovaDatabase?.recipeDao?.insert(recipe)
     }
 
-    suspend fun getAllRecipes(): List<Recipe> = angelovaDatabase?.recipeDao?.getAllRecipes() ?: listOf()
+    suspend fun getAllRecipes(): List<Recipe>? = angelovaDatabase?.recipeDao?.getAllRecipes()
 
     suspend fun updateRecipeBookmarkStatus(id: Long): Boolean {
         return angelovaDatabase?.recipeDao?.toggleBookmarkStatus(id) ?: false
@@ -32,5 +32,5 @@ class AngelovaRepository(context: Context) {
 
     suspend fun getRecipeById(id: Long): Recipe? = angelovaDatabase?.recipeDao?.getRecipeById(id)
 
-    suspend fun getBookmarkedRecipes(): List<Recipe> = angelovaDatabase?.recipeDao?.getBookmarkedRecipes() ?: listOf()
+    suspend fun getBookmarkedRecipes(): List<Recipe>? = angelovaDatabase?.recipeDao?.getBookmarkedRecipes()
 }

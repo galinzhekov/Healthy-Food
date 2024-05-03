@@ -45,13 +45,13 @@ class MainActivity : AppCompatActivity() {
 
         val angelovaRepository = AngelovaRepository(this)
         CoroutineScope(Dispatchers.IO).launch {
-            if (angelovaRepository.getAllCategories().isEmpty()) {
+            if (angelovaRepository.getAllCategories()?.isEmpty() == true) {
                 angelovaRepository.insertCategory(Category(category = "All"))
                 angelovaRepository.insertCategory(Category(category = "Newest Foods"))
                 angelovaRepository.insertCategory(Category(category = "Best Recipes"))
                 angelovaRepository.insertCategory(Category(category = "Popular ingredients"))
             }
-            if (angelovaRepository.getAllRecipes().toList().isEmpty()) {
+            if (angelovaRepository.getAllRecipes()?.isEmpty() == true) {
                 angelovaRepository.insertRecipe(Recipe(name = "Pasta", description = "Delicious pasta dish", imageResourceId = R.drawable.cupcake, categoriesList = arrayListOf(1, 3, 4), informationLabelsList = arrayListOf(Pair("10", "Въглехидрати"), Pair("20", "Белтъци"), Pair("30", "Мазнини"), Pair("10", "Минути"))))
                 angelovaRepository.insertRecipe(Recipe(name = "Salad", description = "Healthy salad recipe", imageResourceId = R.drawable.cupcake, categoriesList = arrayListOf(1, 2, 4), informationLabelsList = arrayListOf(Pair("10", "Въглехидрати"), Pair("20", "Белтъци"), Pair("30", "Мазнини"))))
                 angelovaRepository.insertRecipe(Recipe(name = "Pizza", description = "Homemade pizza recipe", imageResourceId = R.drawable.cupcake, categoriesList = arrayListOf(1, 2)))

@@ -41,6 +41,10 @@ class BookmarkedRecipesAdapter(recipes: List<Recipe>, onItemListener: OnItemList
         private val imageView: ImageView = itemView.findViewById(R.id.imageView)
         private val textView: TextView = itemView.findViewById(R.id.textView)
 
+        init {
+            itemView.setOnClickListener(this)
+        }
+
         fun bind(recipe: Recipe) {
             // Set image and text data
             imageView.setImageResource(recipe.imageResourceId)

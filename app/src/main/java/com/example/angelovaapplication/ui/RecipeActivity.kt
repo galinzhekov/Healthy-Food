@@ -27,7 +27,7 @@ class RecipeActivity : AppCompatActivity() {
 
         angelovaRepository = AngelovaRepository(this)
         recipe = intent.getParcelableExtra("recipe")
-        println(recipe?.name)
+//        println(recipe?.name)
 
         binding.informationLabelRecyclerView.layoutManager = GridLayoutManager(this, 3)
 
@@ -74,9 +74,7 @@ class RecipeActivity : AppCompatActivity() {
                     }
                 }
             }
-            .setNegativeButton("Не") { _, _ ->
-
-            }
+            .setNegativeButton("Не") { _, _ -> }
             .show()
     }
 }

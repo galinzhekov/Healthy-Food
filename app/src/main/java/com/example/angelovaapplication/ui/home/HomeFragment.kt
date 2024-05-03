@@ -42,8 +42,8 @@ class HomeFragment : Fragment(), OnItemListener {
         angelovaRepository = AngelovaRepository(requireContext())
 
         CoroutineScope(Dispatchers.IO).launch {
-            angelovaRepository.getAllCategories().let { tabs ->
-                CoroutineScope(Dispatchers.IO).launch {
+            angelovaRepository.getAllCategories()?.let { tabs ->
+                CoroutineScope(Dispatchers.Main).launch {
                     tabs.forEach { category ->
                         val tab = binding.categoriesTabLayout.newTab()
                         tab.text = category.category
@@ -64,9 +64,6 @@ class HomeFragment : Fragment(), OnItemListener {
                     })
                 }
             }
-
-
-
         }
 
         val layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -110,7 +107,7 @@ class HomeFragment : Fragment(), OnItemListener {
         super.onResume()
 
         CoroutineScope(Dispatchers.IO).launch {
-            angelovaRepository.getAllRecipes().let {
+            angelovaRepository.getAllRecipes()?.let {
                 CoroutineScope(Dispatchers.Main).launch {
                     recipes = it as ArrayList
                     adapter.updateData(recipes)

@@ -39,9 +39,11 @@ class BookmarksFragment : Fragment(), OnItemListener {
         binding.bookmarkRecipesRecyclerView.adapter = adapter
 
         CoroutineScope(Dispatchers.IO).launch {
-            angelovaRepository.getBookmarkedRecipes().let {
-                recipes = it as ArrayList
-                adapter.updateData(recipes)
+            angelovaRepository.getBookmarkedRecipes()?.let {
+                CoroutineScope(Dispatchers.Main).launch {
+                    recipes = it as ArrayList
+                    adapter.updateData(recipes)
+                }
             }
         }
     }
