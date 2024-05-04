@@ -171,6 +171,7 @@ class MainActivity : AppCompatActivity() {
 
         val intent = Intent(Intent.ACTION_SENDTO).apply {
             data = Uri.parse("mailto:$emailAddress")
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
 
         if (intent.resolveActivity(packageManager) != null) {
