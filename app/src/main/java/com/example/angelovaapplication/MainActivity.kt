@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.appBarMain.toolbar)
 
         binding.appBarMain.fab.setOnClickListener { view ->
-            openEmailApp()
+            openBrowser()
         }
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
@@ -166,19 +166,12 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    private fun openEmailApp() {
-        val emailAddress = "eli.angelova@gmail.com"
-
-        val intent = Intent(Intent.ACTION_SENDTO).apply {
-            data = Uri.parse("mailto:$emailAddress")
-            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        }
-
+    private fun openBrowser() {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://fitness-supplements.onrender.com/todo"))
         if (intent.resolveActivity(packageManager) != null) {
             startActivity(intent)
         } else {
-            Toast.makeText(this, "No email app found", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "No app found to open the website", Toast.LENGTH_SHORT).show()
         }
     }
-
 }
